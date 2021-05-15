@@ -1,0 +1,206 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Connexion";
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+}
+
+
+    <div class="col-md-10 offset-1">
+        <br />
+        <div class="login-form-icon">
+            <center><i class="fas fa-user-circle fa-9x text-secondary"></i></center>
+        </div>
+      
+        <form id="account" method="post">
+          <br/>
+                <div asp-validation-summary="All" text-danger> </div>
+                <hr />
+                
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email Address" />
+                </div>
+                <p asp-validation-for="Input.Email" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+                </div>
+                <p asp-validation-for="Input.Password" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <center>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </center>
+            </div>
+
+            <div class="form-group">
+                <center>
+                    <button type="submit" class="btn btn-block btn-outline-danger" style="width:75%;"><h5>Se connecter</h5></button>
+                </center>
+            </div>
+        </form>
+
+        <center>
+            <a href="/Identity/Account/register" class="btn btn-block btn-outline-danger" style="width:75%;" role="button"><h5>Créer un compte</h5></a> <br />
+        </center>
+
+    </div>
+
+
+<!--
+<form id="account" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="card-body">
+        <center>
+            <div class="form-group" style="width:80%;">
+                <input asp-for="Input.Email" type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter votre email">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+            </div>
+            <div class="form-group" style="width:80%;">
+                <input asp-for="Input.Password" type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <center>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </center>
+            </div>
+        </center>
+    </div>
+    <div class="card-footer">
+        <center>
+            <div class="row">
+                <div class="col col-md-6">
+                    <div class="form-group" >
+                        <button type="submit" class="btn btn-lg btn-outline-danger"><h5>Connexion</h5></button>
+                    </div>
+                </div>
+                </div>
+
+        </center>
+    </div>
+</form>
+-->
+
+
+
+
+<!-- /.card -->
+<!--
+<div class="col-md-10 offset-1">
+
+
+        <div class="image">
+            <center>
+                <img src="/img/user.jpeg" class="img-circle elevation-2" alt="User Image">
+            </center>
+        </div>
+
+
+    <form id="account" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <input asp-for="Input.Email" class="form-control" placeholder="Email Address" />
+            </div>
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+            </div>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <center>
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </center>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block btn-outline-danger ">Connexion</button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+    <!--
+    <div class="col-md-4">
+
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h3 class="card-title">Ooredoo, Département marketing </h3>
+                <h5 class="card-subtitle mb-2 text-muted">Notes : </h5>
+                <p class="card-text">
+                    Vous ne pouvez s'authentifier qu'avec un mail professionnel de Ooredoo . L'utilisateur doit etre un membre de département
+                    marketing pour pouvoir accéder au tableau de bord . Cliquez sur S'incrivez pour créer un nouveau compte. <br />
+                </p>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-outline-danger" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">créer un compte </button>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-outline-danger">Mot de passe oublié </button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        -->
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

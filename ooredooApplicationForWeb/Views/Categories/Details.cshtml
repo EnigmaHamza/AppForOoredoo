@@ -1,0 +1,184 @@
+﻿@model ooredooApplicationForWeb.Data.Categorie
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
+}
+        <style>
+            .table td {
+                text-align: center;
+            }
+
+            .table th {
+                text-align: center;
+            }
+
+        </style>
+    <div class="row">
+        <p><br /><br /></p>
+
+       
+    </div>
+
+
+
+
+    <div class="row">
+        <br>
+        <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card  card-outline">
+                <div class="card-body box-profile">
+                    <div class="text-center">
+
+                    </div>
+
+                    <h3 class="profile-username text-center"> @Html.DisplayFor(model => model.NomCategorie)</h3>
+
+                    <p class="text-muted text-center"> -----</p>
+
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Nombre observations</b> <a style="color:black" class="float-right">@Html.DisplayFor(model => model.NombreObservations)</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Observations positives</b> <a  style="color:black"class="float-right"> @Html.DisplayFor(model => model.NbObservationsPositives)</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Observations négatives</b> <a style="color:black" class="float-right">            @Html.DisplayFor(model => model.NbObservationsNegatives) 
+</a>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- About Me Box -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Info</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" >
+                    <strong><i class="fas fa-book mr-1"></i>Categorie des produits Télécom</strong>
+
+
+
+                    <hr>
+
+                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                       
+
+                        <li class="nav-item"> <a class="nav-link active" asp-controller="Categories" asp-action="Index" data-toggle="tab" style="background-color: #00bc8c;">Nombres list</a></li>
+                        <li class="nav-item"><a role="button" class="nav-link" asp-controller="Observations" asp-action="listAvisperUser" asp-route-id="@Model.Id">Voir activité </a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" asp-controller="categories" asp-action="Index">Retour</a></li>
+                    </ul>
+                </div>
+    
+                <div class="card-body" style=" margin-bottom: 12%;">
+
+
+                    <div class="row">
+
+                        <!-- /.col -->
+                        <!-- /.col -->
+
+
+                        <div class="card" style="width:100%;">
+                            <!-- tableau -->
+                            <div class="card-header border-0">
+                                <h3 class="card-title">
+                                    Suivie des catégories
+                                </h3>
+                                <div class="card-tools">
+
+                                    <a href="#" class="btn btn-tool btn-sm">
+                                        <i class="fas fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-striped table-valign-middle">
+                                    <thead>
+                                        <tr></tr>
+                                        <tr>
+                                            <th colspan="2">
+                                                <small class="text-success mr-1">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    +
+                                                </small> Total observation positives
+                                            </th>
+                                            <th colspan="2">
+                                                <small class="text-danger mr-1">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    -
+                                                </small> Total observation négatives
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2">@Html.DisplayFor(model => model.NbObservationsPositives)</th>
+                                            <td colspan="2">@Html.DisplayFor(model => model.NbObservationsNegatives)</td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><i class="far fa-smile"></i>  Bonne  </th>
+                                            <th scope="col"><i class="far fa-meh-blank"></i>  Moyenne  </th>
+                                            <th scope="col"><i class="far fa-frown-open"></i> Bas de moyenne</th>
+                                            <th scope="col"><i class="far fa-dizzy"></i> Mauvaise</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th> @Html.DisplayFor(model => model.NbBonne)</th>
+                                            <td> @Html.DisplayFor(model => model.NbMoyenne)</td>
+                                            <td> @Html.DisplayFor(model => model.troublé)</td>
+                                            <td> @Html.DisplayFor(model => model.NbIncoherante)</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                   
+
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+

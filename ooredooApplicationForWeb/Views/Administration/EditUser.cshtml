@@ -1,0 +1,133 @@
+﻿@using ooredooApplicationForWeb.ViewModels;
+@model EditUserViewModel
+
+
+@{
+    ViewBag.Title = "Editer utilisateurs";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
+}
+
+<h1>Edit User</h1>
+
+
+<div class="card" style="margin-left:400px;margin-right:400px;">
+
+    <form method="post" class="mt-3">
+        <br />
+        <div asp-validation-summary="All"></div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Nom" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Nom" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Prenom" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Prenom" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Email" class="form-control">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="UserName" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="UserName" class="form-control">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <button type="submit" class="btn btn-block btn-outline-danger" style="width:50%;"><h5>Modifier</h5></button>
+                    <a asp-action="ListUsers" role="button" class="btn btn-block btn-outline-danger" style="width:50%;">Cancel</a>
+                </center>
+                <br />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="card" style="margin-left: 400px;margin-right: 400px;">
+    <div class="card-header border-0">
+        <h2 class="card-title" style="font-size:22px;">
+            Utilisateurs appartenant à ce role
+        </h2>
+
+        <div class="card-tools">
+
+            <a href="#" class="btn btn-tool btn-sm">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div class="card-body table-responsive p-0">
+        @if (Model.Roles.Any())
+        {
+            <table class="table  table-valign-middle" >
+                <thead>
+                    <tr>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var role in Model.Roles)
+
+                    {
+                    <tr>
+                        <td>
+                            <h5 style="text-align:center">@role</h5>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+            <center>
+                <a class="navbar-brand" href="#">
+                    <img src="/img/roles/Aucun user in role.png" alt="Logo" style="width:400px;">
+                </a>
+            </center>
+
+        }
+
+    </div>
+
+    <br />
+    <center>
+        <a asp-controller="Administration" asp-action="ManageUserRoles"
+           asp-route-userId="@Model.Id" class="btn btn-outline-danger" style="width:50%;margin-left:30px;">
+           gérer roles à cet utilisateur
+        </a>
+    </center>
+
+    <br />
+</div>

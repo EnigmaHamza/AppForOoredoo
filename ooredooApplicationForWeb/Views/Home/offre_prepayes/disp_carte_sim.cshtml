@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "Carte de disponibilité";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
+}
+<script type="text/javascript"
+        src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+<script type="text/javascript">
+
+    var viz;
+
+    function initViz() {
+        var containerDiv = document.getElementById("vizContainer"),
+            url = "https://public.tableau.com/views/ma_carte_de_disp/dashmapdisponibilit?:language=en&:display_count=y&:origin=viz_share_link",
+            options = {
+                hideTabs: true
+            };
+
+        viz = new tableau.Viz(containerDiv, url, options);
+        // Create a viz object and embed it in the container div.
+    }
+
+    // Opens the Download to PDF dialog box
+    function exportToPDF() {
+        viz.showExportPDFDialog();
+    }
+
+    // Opens the Download Crosstab dialog box
+    function exportToCSV() {
+        viz.showExportCrossTabDialog();
+    }
+
+    // Downloads the crosstab data in an Excel file
+    function exportToExcel() {
+        viz.exportCrossTabToExcel();
+    }
+
+    // Opens the Download Image dialog box
+    function exportImage() {
+        viz.showExportImageDialog();
+    }
+
+    // Opens the Download PowerPoint dialog box
+    function exportPowerPoint() {
+        viz.showExportPowerPointDialog();
+    }
+
+    // Opens the Download Image dialog box
+    function exportImage() {
+        viz.showExportImageDialog();
+    }
+
+    // Opens the Download PowerPoint dialog box
+    function exportPowerPoint() {
+        viz.showExportPowerPointDialog();
+    }
+
+    function vizResize() {
+        var width = document.getElementById("resizeWidth").value;
+        var height = document.getElementById("resizeHeight").value;
+        var sheet = viz.getWorkbook().getActiveSheet();
+
+        sheet.changeSizeAsync(
+            { "behavior": "EXACTLY", "maxSize": { "height": height, "width": width } })
+            .then(viz.setFrameSize(parseInt(width, 10), parseInt(height, 10)));
+    }
+
+
+</script>
+<br />
+<div class="card card-primary">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-4">
+                <a style="font-size:17px;"> @ViewData["Title"]</a>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4">
+                <right>
+                    <div class="btn-group me-2" style="margin-left:200px;">
+                        <button type="button" onclick="exportToPDF();" class="btn btn-sm btn-outline-light" style="font-size:12px;">Pdf doc <i class="fas fa-file-pdf"></i></button>
+                        <button type="button" onclick="exportImage();" class="btn btn-sm btn-outline-light" style="font-size:12px;"> image  <i class="fas fa-images"></i></button>
+                        <button type="button" onclick="exportPowerPoint();" class="btn btn-sm btn-outline-light" style="font-size:12px;"> PowerPoint <i class="fas fa-file-powerpoint"></i></button>
+                    </div>
+                </right>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="vizContainer" style="height: 850px;padding-left: 10px;"></div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex flex-row justify-content-end">
+                <span class="mr-2">
+                    <i class="fas fa-square text" style=" color: #e7c3c3 !important;"></i>    Faible disponibilité
+                </span>
+
+                <span>
+                    <i class="fas fa-square text " style="color: #9b0505 !important"></i>   Forte disponibilité
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>

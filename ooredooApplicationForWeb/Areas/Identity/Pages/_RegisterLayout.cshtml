@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-8 offset-md-3">
+        <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <center>
+                        <a class="navbar-brand" href="/img/logo_ooredoo.png">
+                            <img src="/img/logo_ooredoo.png" alt="Logo" style="width:450px;">
+                        </a>
+                    </center>
+                </div>
+                <div class="card-body">
+                    @RenderBody()
+                </div>
+                <div class="card-footer">
+                    <div class="card" style="margin-top: 10px;">
+                        <div class="card-header">
+                            <h6>Régle de confidentialité</h6>
+                        </div>
+                        <div class="card-body">
+                           
+                            <p class="card-text">
+                                Pour pouvoir se connecter à l'application web, Vous devez être un membre de département marketing et avoir un mail professionnel d'ooredoo . 
+                                Ceci est un exemple de mail pour l'inscription : <center>ali.derbal@ooredoo.dz</center>
+                            </p>
+                          
+                        </div>
+                    </div>
+             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+
+
+}

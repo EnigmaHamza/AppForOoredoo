@@ -1,0 +1,71 @@
+﻿@using ooredooApplicationForWeb.ViewModels;
+
+@model List<UserRoleViewModel>
+
+@{
+    var roleId = ViewBag.roleId;
+}
+@{
+    ViewBag.Title = "edit  Role";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<div class="card" style="margin-left: 400px;margin-right: 400px;">
+    <div class="card-header border-0">
+        <h2 class="card-title" style="font-size:22px;">
+           Ajouter ou supprimer utilisateurs de ce role 
+        </h2>
+
+        <div class="card-tools">
+
+            <a href="#" class="btn btn-tool btn-sm">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div class="card-body table-responsive p-0">
+      
+            <center>
+                <a class="navbar-brand" href="#">
+                    <img src="/img/roles/addrole.png" alt="Logo" style="width:250px;">
+                </a>
+            </center>
+
+
+    </div>
+
+
+</div>
+<center>
+    <form method="post">
+        <div class="card" style="width:55%">
+            <div class="card-header">
+                
+            </div>
+            <div class="card-body" >
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="form-check m-1" >
+                        <input type="hidden" asp-for="@Model[i].UserId" />
+                        <input type="hidden" asp-for="@Model[i].UserName" />
+                        <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                            @Model[i].UserName
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Update" class="btn btn-outline-danger"
+                       style="width:auto" />
+                <a asp-action="EditRole" asp-route-id="@roleId"
+                   class="btn btn-outline-danger" style="width:auto">Cancel</a>
+            </div>
+        </div>
+    </form>
+</center>

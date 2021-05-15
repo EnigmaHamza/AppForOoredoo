@@ -1,0 +1,147 @@
+﻿@model IEnumerable<ooredooApplicationForWeb.Data.Observations>
+
+@{
+    ViewData["Title"] = "listAvisperUser";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
+}
+
+
+<style>
+
+
+    .post {
+        border-bottom: 1px solid #adb5bd;
+        color: #666;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        margin-left: 20px;
+    }
+</style>
+<div class="row">
+    <p><br /><br /></p>
+
+
+</div>
+
+
+
+
+<div class="row">
+    <br>
+    <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="card  card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+
+                </div>
+
+                <h3 class="profile-username text-center">Nom Categorie</h3>
+
+                <p class="text-muted text-center"> </p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b>Nombre observations</b> <a style="color:black" class="float-right"> @*@Html.DisplayFor(model => model.NombreObservations)*@ </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Observations positives</b> <a style="color:black" class="float-right">  @*@Html.DisplayFor(model => model.NbObservationsPositives)*@ </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Observations négatives</b> <a style="color:black" class="float-right">
+                            @*@Html.DisplayFor(model => model.NbObservationsNegatives)*@
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- About Me Box -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Info</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <strong><i class="fas fa-book mr-1"></i>Categorie des produits Télécom</strong>
+
+
+
+                <hr>
+
+                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header p-2">
+                <ul class="nav nav-pills">
+
+
+
+
+                    @*<li class="nav-item"> <a class="nav-link" asp-controller="Categories" asp-action="Index" >Nombres list</a></li>*@
+                    <li class="nav-item"><a role="button" class="nav-link" asp-controller="Observations" asp-action="listAvisperUser" style="background-color: #00bc8c;color:white">Voir activité </a></li>
+                    <li class="nav-item"><a class="nav-link"  asp-controller="Categories" asp-action="Index">Retour</a></li>
+                </ul>
+            </div>
+
+            <div class="card-body" style=" margin-bottom: 12%;">
+
+
+                <div class="row">
+                    @*le post*@
+                    @foreach (var item in Model)
+                    {
+                    <div class="post" style="width:90%;">
+
+                        <div class="user-block">
+                            <img class="img-circle " src="/img/u.png" alt="user image" style=" width: 45px;">
+                            <span class="username">
+                                <a href="#" style="color:black;font-weight: bolder;">@Html.DisplayFor(modelItem => item.user.UserName)</a>
+                                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                            </span>
+                            <span class="description">Date de publication @Html.DisplayFor(modelItem => item.dateObservation) </span>
+                        </div>
+                        <!-- /.user-block -->
+                     
+                        <p>
+                        <p style="font-weight: bolder;color:#20c997 ">  @Html.DisplayFor(modelItem => item.Nom)</p>
+                        @Html.DisplayFor(modelItem => item.text)
+                        </p>
+
+                        <p>
+                            <a href="#" class="link-black text-sm mr-2"><i class="far fa-keyboard"></i>    @Html.DisplayFor(modelItem => item.typeSuivie)</a>
+                            <a href="#" class="link-black text-sm"><i class="far fa-smile"></i>  <i class="far fa-frown"></i>  @Html.DisplayFor(modelItem => item.rating)</a>
+
+                        </p>
+
+                    </div>
+                    }
+
+     
+                    </div>
+
+
+
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+

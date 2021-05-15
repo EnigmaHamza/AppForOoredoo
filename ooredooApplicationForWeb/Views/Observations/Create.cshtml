@@ -1,0 +1,186 @@
+﻿@model ooredooApplicationForWeb.Data.Observations
+@using Microsoft.AspNetCore.Identity;
+@using ooredooApplicationForWeb.Areas.Identity.Data;
+@inject SignInManager<ApplicationUser> signInManager ;
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
+}
+
+
+
+<style>
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    .form-control:focus {
+    border-color: #ed1c24;
+    box-shadow: 0 0 0 0.2rem rgba(255, 67, 71, 0.25);
+    }
+
+    .card-header {
+    background-color: white;
+    font-family: 'Roboto',sans-serif;
+    }
+
+    .card-footer {
+    background-color: white;
+    }
+
+    
+</style>
+
+<div class="row" id="create_obs">
+    @if (ViewBag.issuccess)
+    {
+        <div class="col-md-12" style=" margin-top: 20px;">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Félicitation !</strong> Votre Avis est ajouté avec succées
+                <a asp-controller="home" asp-action="Index"> Rentrer à l'acceuil et voir plus de détails</a>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+
+   
+        <div class="col-md-3 " style="     margin-left: 220px; ">
+            <div class="col-md-12" style="margin-top: 30px;">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <p style="    font-size: 20px; ">Ajouter un Avis </p>
+                    </div>
+                    <div class="card-body">
+                        <center>
+                            <a class="navbar-brand" href="#">
+                                <img src="/img/index/notes.png" alt="Logo" style="        width: 250px;         margin-top: 40%;         margin-bottom: 50%; ">
+                            </a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 ">
+            <div class="col-md-12" style="margin-top: 30px;">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+
+
+                    <div class="card-body">
+                        <form asp-action="Create">
+
+                            <br />
+                            <div asp-validation-summary="All"></div>
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Utilisateur</label>
+
+                                        <input asp-for="ApplicationUserID" class="form-control" value="@User.Identity.Name" placeholder="@User.Identity.Name" disabled />
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"> Date actuelle</label>
+                                        <input asp-for="dateObservation" class="form-control" placeholder="sdsd" disabled />
+                                        <span asp-validation-for="dateObservation" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Categorie de produit</label>
+                                        <select asp-for="CategorieId" class="form-control" asp-items="ViewBag.CategorieId"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Type de suivie </label>
+                                        <select asp-for="typeSuivie" asp-items="Html.GetEnumSelectList<ooredooApplicationForWeb.Data.TypeSuivie>()" class="form-control"></select>
+                                        <span asp-validation-for="typeSuivie" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Titre d'avis</label>
+                                        <input asp-for="Nom" class="form-control" />
+                                        <span asp-validation-for="Nom" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Rating d'Avis et observation</label>
+                                        <select asp-for="rating" asp-items="Html.GetEnumSelectList<ooredooApplicationForWeb.Data.Rating>()" class="form-control"></select>
+                                        <span asp-validation-for="rating" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <br />
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label> Commentaire</label>
+                                        <textarea asp-for="text" class="form-control" rows="4" placeholder="Enter ..."></textarea>
+                                        <span asp-validation-for="text" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <center>
+                                        <button type="submit" class="btn btn-block btn-outline-danger" style="width:55%;"><h5>Ajouter</h5></button> <br />
+                                    </center>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   
+
+
+
+
+
+
+
+
+
+
+
+

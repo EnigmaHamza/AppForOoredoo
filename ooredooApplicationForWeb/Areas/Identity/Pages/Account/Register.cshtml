@@ -1,0 +1,75 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Areas/Identity/Pages/_RegisterLayout.cshtml";
+}
+
+
+
+
+
+
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <br />
+        <div asp-validation-summary="All" ></div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Nom"></label>
+                    <input asp-for="Input.Nom" class="form-control" />
+                    <p asp-validation-for="Input.Nom" class="text-danger"></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Prenom"></label>
+                    <input asp-for="Input.Prenom" class="form-control" />
+                    <p asp-validation-for="Input.Prenom" class="text-danger"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" pattern="+.gmai.+" class="form-control" />
+                    <p asp-validation-for="Input.Email" class="text-danger"></p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <p asp-validation-for="Input.Password" class="text-danger"></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <p asp-validation-for="Input.ConfirmPassword" class="text-danger"></p>
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <button type="submit" class="btn btn-block btn-outline-danger" style="width:55%;" ><h5>S'inscrire</h5></button> <br />
+                </center>
+            </div>
+            </div>
+    </form>
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

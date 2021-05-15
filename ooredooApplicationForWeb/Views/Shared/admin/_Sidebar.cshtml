@@ -1,0 +1,256 @@
+﻿@using static ooredooApplicationForWeb.Helpers.NavigationIndicatorHelper;
+@using Microsoft.AspNetCore.Identity;
+@using ooredooApplicationForWeb.Areas.Identity.Data;
+@inject SignInManager<ApplicationUser> signInManager ;
+
+
+<aside class="main-sidebar sidebar-light-primary elevation-4">
+
+
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link" style="        border-bottom: 0px solid #4b545c; ">
+        <img src="/img/logo_ooredoo.png" alt="AdminLTE Logo" class="brand-image " style=" margin-left: 7px;">
+        <span class="brand-text font-weight-dark" style=" color: #343a40;"></span>
+
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+
+        <!-- Sidebar PARAMTRES USER -->
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("admin"))
+        {
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="border-bottom: 0px solid ">
+                <div class="image">
+                    <img src="/img/u.png" alt="User Image">
+                </div>
+
+                <a class="dropdown-item" href="#" role="button" style="font-size:17px;">Admin mode</a>
+
+            </div>
+        }
+        else
+        {
+            <br /><br />
+        }
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("admin")) { }
+
+            <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item ">
+                    <a asp-controller="Home" asp-action="Index" class="nav-link" style=@Url.MakeActiveClass("home","Index")>
+                        <i class="fas fa-home" style="margin-right:5px;"></i>
+                        Acceuil
+                    </a>
+                </li>
+
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item ">
+                    <a asp-controller="Categories" asp-action="Index" class="nav-link" style=@Url.MakeActiveClass("Categories","Index")>
+                        <i class="fas fa-tasks" style="margin-right:5px;"></i>
+                        Performances d'avis
+                    </a>
+                </li>
+
+             
+
+
+                <div class="dropdown-divider"></div>
+
+                <!--LIEN 1 OFFRES PREPAYES-->
+                <li class="nav-item menu-open menu-is-opening ">
+                    <a href="#" class="nav-link">
+                        <i class="fas  fa-chart-line" style="margin-right:5px;"></i>
+
+                        Offres prépayées
+                        <i class="right fas fa-angle-left"></i>
+
+
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Disp_offre_prep" class="nav-link" style=@Url.MakeActiveClass("home","Disp_offre_prep")>
+
+                                Disponibilité
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Reco_offre_prep" class="nav-link" style=@Url.MakeActiveClass("home","Reco_offre_prep")>
+
+                                Recommendation
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <div class="dropdown-divider"></div>
+                <!--LIEN 1 DISPO SIM-->
+                <!--LIEN 2 OFFRE 3G-->
+                <li class="nav-item menu-open menu-is-opening">
+                    <a href="#" class="nav-link">
+                        <i class="fas  fa-chart-line" style="margin-right:5px;"></i>
+
+                        Offres 3G
+                        <i class="right fas fa-angle-left"></i>
+
+                    </a>
+                    <ul class="nav nav-treeview">
+
+
+
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="index_reco_offre_3g" class="nav-link" style=@Url.MakeActiveClass("home","index_reco_offre_3g")>
+
+                                Recommandation
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--LIEN 2 DISPO SIM-->
+                <div class="dropdown-divider"></div>
+
+                <!--LIEN 3 Recharge electronique-->
+                <li class="nav-item menu-open menu-is-opening">
+                    <a href="#" class="nav-link">
+                        <i class="fas  fa-chart-line" style="margin-right:5px;"></i>
+
+                        Recharges électroniques
+                        <i class="right fas fa-angle-left"></i>
+
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+
+                                Disponibilité
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../../index2.html" class="nav-link">
+
+                                Recommandation
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--LIEN 3 Recharge electronique-->
+                <div class="dropdown-divider"></div>
+
+                <!--LIEN 3 CLE DATA-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas  fa-chart-line" style="margin-right:5px;"></i>
+
+                        Clés data
+                        <i class="right fas fa-angle-left"></i>
+
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+
+                                <p class="hamza">Offres prépayées</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../../index2.html" class="nav-link">
+
+                                <p class="hamza">Carte geographique</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--LIEN 3 CLE DATA-->
+
+                <div class="dropdown-divider"></div>
+
+
+                <!--LIEN 4 MODEM mifi-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas  fa-chart-line" style="margin-right:5px;"></i>
+
+                        Modem mifi
+                        <i class="right fas fa-angle-left"></i>
+
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+
+                                <p class="hamza">Offres prépayées</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../../index2.html" class="nav-link">
+
+                                <p class="hamza">Carte geographique</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--LIEN 4 modem-->
+
+                <div class="dropdown-divider"></div>
+
+                <!--LIEN 5 poster-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas  fa-chart-line" style="margin-right:5px;"></i>
+
+                        Posters
+                        <i class="right fas fa-angle-left"></i>
+
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+
+                                <p class="hamza">Offres prépayées</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../../index2.html" class="nav-link">
+
+                                <p class="hamza">Carte geographique</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--LIEN 5 poster-->
+
+                <div class="dropdown-divider"></div>
+
+
+
+
+
+                <li class="nav-item ">
+                    <a asp-controller="Home" asp-action="Privacy" class="nav-link" style="@Url.MakeActiveClass("home","privacy")">
+                        <i class="far fa-user" style="margin-right:5px;"></i>
+
+                        Privacy
+
+                    </a>
+                </li>
+                <div class="dropdown-divider"></div>
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
